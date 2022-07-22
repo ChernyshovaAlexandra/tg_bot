@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import Karaoke from "./Karaoke";
 import { screens } from "./screens";
 import Standart from "./Standart";
+import Start from "./Start";
 import Tags from "./Tags";
 
 
@@ -9,6 +11,7 @@ function Performance() {
     const [level, setLevel] = useState(0)
     const [addition, setAddition] = useState(undefined)
     const [tag, setTag] = useState()
+    const [audience, showAudience] = useState(true)
 
     const nextLevel = () => {
         if (screens.length - 1 > level) {
@@ -19,41 +22,74 @@ function Performance() {
             setLevel(0);
             setAddition(undefined)
         }
+        showAudience(false);
+        setTimeout(() => {
+            showAudience(true)
+        }, 10)
     }
 
     const selectTopic = (topic) => {
         setTag(topic);
+        showAudience(false);
+        setTimeout(() => {
+            showAudience(true)
+        }, 10);
         setAddition(0)
-        // nextLevel()
     }
     return (
-        <div className="question_block max-w-lg	mx-auto bg-white p-8 rounded-lg	shadow-md">
-            <div>
-                {screens[level].type === 'standart' ?
-                    <Standart
+        <div className="main-content">
+            {audience &&
+                <div className="audience-container" >
+                    <div className="audience-inner" style={{
+                        background: `url(${screens[level].screen}) no-repeat center`,
+                        backgroundSize: `cover`
+                    }}></div>
+                </div>}
+            <>
+                {screens[level].type === 'start' ?
+                    <Start
                         addition={addition}
                         question={screens[level].question}
                         answers={screens[level].answers}
                         setAddition={setAddition}
                         nextLevel={nextLevel}
-                    />
-                    :
-                    screens[level].type === 'tags' ?
-
-                        <Tags
-                            setTag={selectTopic}
-                            tags={screens[level].answers[0].tags}
+                    /> :
+                    screens[level].type === 'karaoke' ?
+                        <Karaoke
                             answers={screens[level].answers}
-                            addition={addition}
                             nextLevel={nextLevel}
+                            setAddition={setAddition}
+                            addition={addition}
                         />
-
                         :
-                        screens[level].type === 'exception' ?
-                            <></> :
-                            <></>
+                        screens[level].type === 'standart' ?
+                            <div className="interactive">
+                                <Standart
+                                    addition={addition}
+                                    question={screens[level].question}
+                                    answers={screens[level].answers}
+                                    setAddition={setAddition}
+                                    nextLevel={nextLevel}
+                                />
+                            </div>
+                            :
+                            screens[level].type === 'tags' ?
+                                <div className="interactive">
+                                    <Tags
+                                        setTag={selectTopic}
+                                        tags={screens[level].answers[0].tags}
+                                        answers={screens[level].answers}
+                                        addition={addition}
+                                        addBtn={screens[level].answers[0].additionText}
+                                        nextLevel={nextLevel}
+                                    />
+                                </div>
+                                :
+                                screens[level].type === 'exception' ?
+                                    <></> :
+                                    <></>
                 }
-            </div>
+            </>
         </div>
     )
 }

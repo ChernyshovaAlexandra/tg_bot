@@ -1,4 +1,4 @@
-import './App.css';
+import './assets/styles/main.scss';
 import Performance from './screens/Performance'
 
 function App() {
