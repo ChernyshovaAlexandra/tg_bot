@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import EyeContact from "./EyeContact";
 import Karaoke from "./Karaoke";
 import { screens } from "./screens";
 import Standart from "./Standart";
@@ -27,7 +28,11 @@ function Performance() {
             showAudience(true)
         }, 10)
     }
-
+    const showPeople = () => {
+        setTimeout(() => {
+            nextLevel()
+        }, 800)
+    }
     const selectTopic = (topic) => {
         setTag(topic);
         showAudience(false);
@@ -38,7 +43,8 @@ function Performance() {
     }
     return (
         <div className="main-content">
-            {audience &&
+            {audience && 
+            screens[level].type !== 'eye_contact' &&
                 <div className="audience-container" >
                     <div className="audience-inner" style={{
                         background: `url(${screens[level].screen}) no-repeat center`,
@@ -54,40 +60,57 @@ function Performance() {
                         setAddition={setAddition}
                         nextLevel={nextLevel}
                     /> :
-                    screens[level].type === 'karaoke' ?
-                        <Karaoke
-                            answers={screens[level].answers}
-                            nextLevel={nextLevel}
-                            setAddition={setAddition}
-                            addition={addition}
-                        />
+                    screens[level].type === 'audience' ?
+                        <button onClick={showPeople()} />
                         :
-                        screens[level].type === 'standart' ?
-                            <div className="interactive">
-                                <Standart
-                                    addition={addition}
-                                    question={screens[level].question}
-                                    answers={screens[level].answers}
-                                    setAddition={setAddition}
-                                    nextLevel={nextLevel}
-                                />
-                            </div>
-                            :
-                            screens[level].type === 'tags' ?
+                        screens[level].type === 'eye_contact' ?
+                            <EyeContact
+                                nextLevel={nextLevel}
+                                screen={screens[level].screen} /> :
+                            screens[level].type === 'sound' ?
                                 <div className="interactive">
-                                    <Tags
-                                        setTag={selectTopic}
-                                        tags={screens[level].answers[0].tags}
-                                        answers={screens[level].answers}
+                                    <Standart
                                         addition={addition}
-                                        addBtn={screens[level].answers[0].additionText}
+                                        question={screens[level].question}
+                                        answers={screens[level].answers}
+                                        setAddition={setAddition}
                                         nextLevel={nextLevel}
+                                        sound={true}
+                                    /> </div> :
+                                screens[level].type === 'karaoke' ?
+                                    <Karaoke
+                                        answers={screens[level].answers}
+                                        nextLevel={nextLevel}
+                                        setAddition={setAddition}
+                                        addition={addition}
                                     />
-                                </div>
-                                :
-                                screens[level].type === 'exception' ?
-                                    <></> :
-                                    <></>
+                                    :
+                                    screens[level].type === 'standart' ?
+                                        <div className="interactive">
+                                            <Standart
+                                                addition={addition}
+                                                question={screens[level].question}
+                                                answers={screens[level].answers}
+                                                setAddition={setAddition}
+                                                nextLevel={nextLevel}
+                                            />
+                                        </div>
+                                        :
+                                        screens[level].type === 'tags' ?
+                                            <div className="interactive">
+                                                <Tags
+                                                    setTag={selectTopic}
+                                                    tags={screens[level].answers[0].tags}
+                                                    answers={screens[level].answers}
+                                                    addition={addition}
+                                                    addBtn={screens[level].answers[0].additionText}
+                                                    nextLevel={nextLevel}
+                                                />
+                                            </div>
+                                            :
+                                            screens[level].type === 'exception' ?
+                                                <></> :
+                                                <></>
                 }
             </>
         </div>

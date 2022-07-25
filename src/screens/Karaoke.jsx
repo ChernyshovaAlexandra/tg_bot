@@ -36,7 +36,6 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
             errors.indexOf(tap) !== -1 ?
                 setResult({ correct: result.correct, errors: result.errors - 1 }) :
                 setResult({ correct: result.correct - 1, errors: result.errors });
-            console.log(stricked, result)
 
         } else {
             setStricke(stricked => [...stricked, tap])
@@ -82,6 +81,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                     </div>
                     <div className="answers flex gap-4 mt-4">
                         <button className="block mx-auto shadow-sm bg-slate-100 rounded-md"
+                         disabled={!result.errors && !result.correct}
                             onClick={checkResult}
                         >Проверить</button>
                     </div>
@@ -90,6 +90,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                         <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }}></div>
                         <button
                             onClick={() => nextLevel()}
+                           
                             className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">{answers[addition].additionButton}</button>
                     </>}
             </div>

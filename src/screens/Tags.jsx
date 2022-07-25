@@ -3,11 +3,10 @@ import React, { useState } from "react";
 
 function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
     const [activeTag, setActiveTag] = useState(undefined)
-
     const selectTopic = (id) => {
         setActiveTag(id)
     }
-    
+
     return (
         <div className="tags_container flex gap-4 flex-wrap ">
             {addition == undefined ?
@@ -23,7 +22,7 @@ function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
                                     background: tag.bg,
                                     zoom: tag.zoom
                                 }}
-                            >{tag.name}</button>
+                                dangerouslySetInnerHTML={{ __html: tag.name }} />
                         )
                     )}
                     <button
@@ -32,12 +31,11 @@ function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
                         className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md">{addBtn}</button>
                 </> :
                 <div className="addition_inner">
-                    <div className="question_block mx-auto p-8">
-                        {answers[addition].addition}
-                    </div>
+                    <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }} />
                     <button
                         onClick={() => nextLevel()}
-                        className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md">{answers[addition].additionButton}</button>
+                        className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md"
+                        dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }} />
 
                 </div>
             }
