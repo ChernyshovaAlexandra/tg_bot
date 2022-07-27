@@ -13,7 +13,9 @@ function Start({ addition, question, answers, setAddition, nextLevel }) {
                                 (ans, id) => (
                                     <button
                                         onClick={() => setAddition(id)}
-                                        className="block shadow-sm bg-slate-100 px-8 py-4 rounded-md" key={id} dangerouslySetInnerHTML={{ __html: ans.text }}></button>
+                                        className="block shadow-sm bg-slate-100 px-8 py-4 rounded-md" key={id}>
+                                        <span className="relative block mx-auto" dangerouslySetInnerHTML={{ __html: ans.text }}></span>
+                                    </button>
                                 )
                             )}
                         </div>
@@ -24,11 +26,11 @@ function Start({ addition, question, answers, setAddition, nextLevel }) {
                     {answers[addition].addition ?
                         <div>
                             <div dangerouslySetInnerHTML={{ __html: answers[addition].addition }}></div>
-
-
                             <button
                                 onClick={() => nextLevel()}
-                                className="block mt-4 shadow-sm bg-slate-100 px-8 py-4 rounded-md">{answers[addition].additionButton}</button>
+                                className="block mt-4 shadow-sm bg-slate-100 px-8 py-4 rounded-md">
+                                <span className="relative block mx-auto" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
+                            </button>
                         </div> :
                         <>
                             <button onClick={nextLevel()}></button>

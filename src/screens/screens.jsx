@@ -1,16 +1,7 @@
-import Start from '../assets/img/startScreen.jpg'
-import Aud1 from '../assets/img/audience1.jpg'
-import Aud2 from '../assets/img/audience2.jpg'
-import Aud3 from '../assets/img/audience3.jpg'
-import Aud4 from '../assets/img/audience4.jpg'
-import Aud5 from '../assets/img/audience5.jpg'
-import React from 'react';
-import AudienceBg from '../components/AudiencsBg'
 export const screens = [
     {
         level: 0,
         type: 'start',
-        screen: Start,
         question: `
         <h2>Практика – лучший учитель!</h2>
         <p>Уверены, вы и сами это знаете, поэтому, предлагаем не откладывать её на потом!</p><p>Вот вы, в первом ряду, готовы ли вы выйти на сцену прямо сейчас?</p>`,
@@ -33,12 +24,12 @@ export const screens = [
     {
         level: 1,
         type: 'audience',
-        screen: Aud1
+        visiblePeople: [2, 10, 12],
     },
     {
         level: 2,
         type: 'standart',
-        screen: Aud1,
+        visiblePeople: [2, 10, 12],
         question: `<h2>Выбор темы</h2> <p>Первое с чего стоит начать подготовку к выступлению — это хорошо знакомая вам тема. Отметьте ту, в которой вы разбираетесь лучше всего.</p><p>Одной темы мало? Никаких проблем – отметьте несколько, а финальное решение примите позже.</p>`,
         answers: [{
             text: "Выбрать тему",
@@ -46,7 +37,7 @@ export const screens = [
     },
     {
         level: 3,
-        screen: Aud1,
+        visiblePeople: [2, 10, 12],
         type: 'tags',
         question: "Первое с чего стоит начать подготовку к выступлению — это хорошо знакомая вам тема. Отметьте ту, в которой вы разбираетесь лучше всего. Не получается выбрать «одну единственную»? Никаких проблем – можно отметить несколько, а финальное решение принять чуть позже.",
         answers: [{
@@ -55,57 +46,55 @@ export const screens = [
                 {
                     name: "Спорт и ЗОЖ",
                     bg: "#81F0F6",
-                    zoom: 1
+                    zoom: 1,
+                    font: "#000"
                 },
                 {
-                    name: "Медиа и айти",
-                    bg: "#F7F532",
-                    zoom: .8
-                },
-                {
-                    name: "Медицина",
+                    name: "Естественные науки",
                     bg: "#A4F375",
-                    zoom: 1.2
+                    zoom: 1.2,
+                    font: "#000"
 
                 },
+              
                 {
-                    name: "Бизнес",
-                    bg: "#4DC5F4",
-                    zoom: .8
-
-                },
-                {
-                    name: "Экология",
-                    bg: "#F28F99",
-                    zoom: 1
-
-                },
-                {
-                    name: "Общество",
+                    name: "Гуманитарные науки",
                     bg: "#ED694A",
-                    zoom: 1
+                    zoom: 1,
+                    font: "#fff"
 
-                },
-                {
-                    name: "Карьера и софт скиллс",
-                    bg: "#579AEA",
-                    zoom: 1.5
                 },
                 {
                     name: "Наука и технологии",
                     bg: "#6EE5D1",
-                    zoom: 1.5
+                    zoom: 1.5,
+                    font: "#000"
+                },
+                {
+                    name: "Экология",
+                    bg: "#F28F99",
+                    zoom: 1 ,
+                    font: "#fff"
                 },
                 {
                     name: "Культура и искусство",
                     bg: "#BB95F1",
-                    zoom: 1.2
+                    zoom: 1.2,
+                    font: "#fff"
 
                 },
                 {
-                    name: "История",
-                    bg: "#FFC500",
-                    zoom: 1
+                    name: "Бизнес и карьера",
+                    bg: "#4DC5F4",
+                    zoom: 1,
+                    font: "#fff"
+
+                },
+                {
+                    name: "Медиа и маркетинг",
+                    bg: "#F7F532",
+                    zoom: 1.2,
+                    font: "#000"
 
                 }
             ],
@@ -116,12 +105,12 @@ export const screens = [
     {
         level: 4,
         type: "audience",
-        screen: Aud2
+        visiblePeople: [2, 5, 6, 10, 12],
     },
     {
         level: 5,
         type: "standart",
-        screen: Aud2,
+        visiblePeople: [2, 5, 6, 10, 12],
         question: `<h2>Культура речи</h2>
         <p>Уверенное знание материала – это фундамент любого выступления! Теперь давайте перейдем к постройке «первого этажа»!</p>
         <p> Чтобы звучать красиво и лаконично, нужно избавиться от слов-паразитов. Сможете очистить от них наше предложение-пример?</p>
@@ -136,19 +125,16 @@ export const screens = [
     },
     {
         level: 6,
-        screen: Aud2,
+        visiblePeople: [2, 5, 6, 10, 12],
         type: "karaoke",
         question: ``,
         answers: [
             {
-                text: '>4',
                 addition: "Отлично! Вы избавились от слов паразитов! Думаем, что если у вас получилось сделать это в нашем караоке-режиме, то и в реальной жизни проблем не возникнет!",
                 additionButton: "Дальше"
             },
             {
-                text: '<4',
                 addition: `Несколько слов паразитов все же остались в вашей открывающей фразе... К счастью, аудитория понимает, что это ваше первое выступление и не судит строго!
-
                 Однако не забудьте поработать над ними в будущем: постарайтесь говорить неспеша и избавиться от всех слов, которые не относятся к сути вашего выступления.
                 `,
                 additionButton: "Дальше"
@@ -157,12 +143,12 @@ export const screens = [
     },
     {
         level: 7,
-        screen: Aud3,
+        visiblePeople: [2, 5, 6, 8, 9, 10, 12, 13],
         type: "audience"
     },
     {
         level: 8,
-        screen: Aud3,
+        visiblePeople: [2, 5, 6, 8, 9, 10, 12, 13],
         type: 'sound',
         question: "Пара молодых ребят на последнем ряду начала обсуждать спойлеры последнего популярного сериала и, кажется, вот-вот внимание переключится на них... Так дела не пойдут: нужно точно говорить...",
         answers: [
@@ -182,11 +168,11 @@ export const screens = [
     {
         level: 9,
         type: "audience",
-        screen: Aud4
+        visiblePeople: [1, 2, 3, 5, 6, 8, 9, 10, 12, 13],
     },
     {
         level: 10,
-        screen: Aud4,
+        visiblePeople: [1, 2, 3, 5, 6, 8, 9, 10, 12, 13],
         type: "standart",
         question: "Американский юрист Брайан Стивенсон однажды привлёк 1,3 млн долларов за одну речь на TED. Всё дело в том, что значительную часть выступления спикер потратил на установление контакта с аудиторией. Для этого существует множество невербальных тактик, однако, можно начать с простого зрительного контакта. Готовы попробовать?",
         answers: [
@@ -197,12 +183,12 @@ export const screens = [
             }]
     },
     {
-        screen: AudienceBg,
+        visiblePeople: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         level: 11,
-        type: "eye_contact"  
+        type: "eye_contact"
     },
     {
-        screen: Aud5,
+        visiblePeople: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         level: 12,
         type: "standart",
         question: "Есть контакт! Все взгляды прикованы к вам! Время выступления подходит к концу, а как мы знаем, уходить стоит на пике. Кажется, настала пора поблагодарить аудиторию и...",
@@ -215,7 +201,7 @@ export const screens = [
         ]
     },
     {
-        screen: Aud5,
+        visiblePeople: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         level: 13,
         type: 'standart',
         question: "тут будет форма для отправки",

@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import $ from 'jquery';
 import Draggable, { DraggableCore } from "react-draggable";
-import AudienceBg from "../components/AudiencsBg";
 
 
 function EyeContact({ nextLevel }) {
@@ -29,20 +27,21 @@ function EyeContact({ nextLevel }) {
         }
     }, [dragged])
     return (
-        <div className="grid w-full h-full grid-cols-3 eye-contact">
-            <AudienceBg draggableRef={draggableRef} ondrag={ondrag} />
-            {sections && sections.length ?
-                sections.map((item, id) => (
-                    <div key={id} className={`section grid grid-rows-3 ${item.contact ? "contacted" : ""}`}>
-                        <div className={`${'section-row' + id + '_1'}`}></div>
-                        <div className={`${'section-row' + id + '_2'}`}></div>
-                        <div className={`${'section-row' + id + '_3'}`}></div>
-                    </div>
-                )) : <></>
-            }
-            <Draggable ref={draggableRef} onDrag={ondrag}>
-                <div className="eye"></div>
-            </Draggable>
+        <div className="w-full h-full eye-contact flex">
+            <div className="grid grid-cols-3 w-full h-full eye-contact">
+                {sections && sections.length ?
+                    sections.map((item, id) => (
+                        <div key={id} className={`section grid grid-rows-3 ${item.contact ? "contacted" : ""}`}>
+                            <div className={`${'section-row' + id + '_1'}`}></div>
+                            <div className={`${'section-row' + id + '_2'}`}></div>
+                            <div className={`${'section-row' + id + '_3'}`}></div>
+                        </div>
+                    )) : <></>
+                }
+                <Draggable ref={draggableRef} onDrag={ondrag}>
+                    <div className="eye"></div>
+                </Draggable>
+            </div>
         </div>
     )
 }

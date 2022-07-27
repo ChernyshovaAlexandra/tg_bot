@@ -47,6 +47,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
     const checkResult = () => {
         handlePause()
         if (result.errors <= 2 && result.correct >= 4) {
+            console.log(result)
             setAddition(0)
         }
         else {
@@ -56,10 +57,10 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
 
     return (
         <div className="interactive">
-            {!addition && <Countdown ref={clockRef} renderer={renderer} date={date} checkResult={checkResult}> </Countdown>}
+            {addition == undefined && <Countdown ref={clockRef} renderer={renderer} date={date} checkResult={checkResult}> </Countdown>}
 
             <div className="anser_inner">
-                {!addition ? <>
+                {addition == undefined ? <>
                     <div className="question_block mx-auto p-8">
                         <p className="karaoke-text">
                             <span className={`violet ${stricked.indexOf('Короче') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('Короче')}>Короче</span>
@@ -81,17 +82,21 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                     </div>
                     <div className="answers flex gap-4 mt-4">
                         <button className="block mx-auto shadow-sm bg-slate-100 rounded-md"
-                         disabled={!result.errors && !result.correct}
+                            disabled={!result.errors && !result.correct}
                             onClick={checkResult}
-                        >Проверить</button>
+                        >
+                            <span className="relative block">Проверить</span>
+
+                        </button>
                     </div>
                 </> :
                     <>
                         <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }}></div>
                         <button
                             onClick={() => nextLevel()}
-                           
-                            className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">{answers[addition].additionButton}</button>
+                            className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">
+                            <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
+                        </button>
                     </>}
             </div>
         </div>

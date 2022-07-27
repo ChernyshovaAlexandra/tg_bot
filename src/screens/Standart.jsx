@@ -15,7 +15,9 @@ function Standart({ addition, question, answers, setAddition, nextLevel, sound }
                             (ans, id) => (
                                 <button
                                     onClick={() => setAddition(id)}
-                                    className="block mx-auto shadow-sm bg-slate-100 rounded-md" key={id} dangerouslySetInnerHTML={{ __html: ans.text }}></button>
+                                    className="block mx-auto shadow-sm bg-slate-100 rounded-md" key={id} >
+                                        <span dangerouslySetInnerHTML={{ __html: ans.text }} className="block relative"></span>
+                                    </button>
                             )
                         )}
                 </div>
@@ -26,7 +28,9 @@ function Standart({ addition, question, answers, setAddition, nextLevel, sound }
                         <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }}></div>
                         <button
                             onClick={() => nextLevel()}
-                            className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">{answers[addition].additionButton}</button>
+                            className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">
+                                <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton}}></span>
+                            </button>
                     </> :
                     <>
                         <button onClick={nextLevel()}></button>

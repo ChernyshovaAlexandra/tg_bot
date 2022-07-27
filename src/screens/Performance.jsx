@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AudienceBg from "../components/AudienceBg";
 import EyeContact from "./EyeContact";
 import Karaoke from "./Karaoke";
 import { screens } from "./screens";
@@ -31,7 +32,7 @@ function Performance() {
     const showPeople = () => {
         setTimeout(() => {
             nextLevel()
-        }, 800)
+        }, 1800)
     }
     const selectTopic = (topic) => {
         setTag(topic);
@@ -42,15 +43,8 @@ function Performance() {
         setAddition(0)
     }
     return (
-        <div className="main-content">
-            {audience && 
-            screens[level].type !== 'eye_contact' &&
-                <div className="audience-container" >
-                    <div className="audience-inner" style={{
-                        background: `url(${screens[level].screen}) no-repeat center`,
-                        backgroundSize: `cover`
-                    }}></div>
-                </div>}
+        <div className={`main-content ${level === 0 ? "start-level" : ""}`}>
+            {screens[level].visiblePeople && <AudienceBg visible={screens[level].visiblePeople} />}
             <>
                 {screens[level].type === 'start' ?
                     <Start

@@ -8,9 +8,9 @@ function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
     }
 
     return (
-        <div className="tags_container flex gap-4 flex-wrap ">
+        <div className="tags_container">
             {addition == undefined ?
-                <>
+                <div className=" grid grid-cols-4 gap-4">
                     {tags.map(
                         (tag, id) =>
                         (
@@ -20,7 +20,8 @@ function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
                                 key={id}
                                 style={{
                                     background: tag.bg,
-                                    zoom: tag.zoom
+                                    zoom: tag.zoom,
+                                    color: tag.font
                                 }}
                                 dangerouslySetInnerHTML={{ __html: tag.name }} />
                         )
@@ -28,14 +29,17 @@ function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
                     <button
                         onClick={() => setTag()}
                         disabled={activeTag === undefined ? true : false}
-                        className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md">{addBtn}</button>
-                </> :
+                        className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md tag-btn">
+                        <span className="relative block" dangerouslySetInnerHTML={{ __html: addBtn }}></span>
+                    </button>
+                </div> :
                 <div className="addition_inner">
                     <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }} />
                     <button
                         onClick={() => nextLevel()}
-                        className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md"
-                        dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }} />
+                        className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md ">
+                        <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
+                    </button>
 
                 </div>
             }
