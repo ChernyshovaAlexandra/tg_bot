@@ -6,7 +6,7 @@ import { screens } from "./screens";
 import Standart from "./Standart";
 import Start from "./Start";
 import Tags from "./Tags";
-
+import $ from 'jquery'
 
 
 function Performance() {
@@ -42,6 +42,7 @@ function Performance() {
         }, 10);
         setAddition(0)
     }
+
     return (
         <div className={`main-content ${level === 0 ? "start-level" : ""}`}>
             {screens[level].visiblePeople && <AudienceBg visible={screens[level].visiblePeople} />}
@@ -55,7 +56,9 @@ function Performance() {
                         nextLevel={nextLevel}
                     /> :
                     screens[level].type === 'audience' ?
-                        <button onClick={showPeople()} />
+                        <button
+                            onClick={showPeople()}
+                        />
                         :
                         screens[level].type === 'eye_contact' ?
                             <EyeContact
@@ -87,6 +90,7 @@ function Performance() {
                                                 answers={screens[level].answers}
                                                 setAddition={setAddition}
                                                 nextLevel={nextLevel}
+                                                people={screens[level].people}
                                             />
                                         </div>
                                         :

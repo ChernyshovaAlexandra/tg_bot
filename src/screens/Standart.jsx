@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import SoundLevel from "../components/SoundLevel";
 
 
-function Standart({ addition, question, answers, setAddition, nextLevel, sound }) {
+function Standart({ addition, question, answers, setAddition, nextLevel, sound, people }) {
     return (
         <> {addition == undefined ?
             <div className="answer_inner">
@@ -11,15 +11,20 @@ function Standart({ addition, question, answers, setAddition, nextLevel, sound }
                     {sound ?
                         <SoundLevel setAddition={setAddition} />
                         :
-                        answers.map(
+                        !people && answers.map(
                             (ans, id) => (
                                 <button
                                     onClick={() => setAddition(id)}
                                     className="block mx-auto shadow-sm bg-slate-100 rounded-md" key={id} >
-                                        <span dangerouslySetInnerHTML={{ __html: ans.text }} className="block relative"></span>
-                                    </button>
+                                    <span dangerouslySetInnerHTML={{ __html: ans.text }} className="block relative"></span>
+                                </button>
                             )
                         )}
+                    {people ?
+                        <button className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md" onClick={() => nextLevel()} >
+                            <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[0].additionText }} />
+                        </button> : <></>
+                    }
                 </div>
             </div> :
             <div className="addition_inner">
@@ -29,8 +34,8 @@ function Standart({ addition, question, answers, setAddition, nextLevel, sound }
                         <button
                             onClick={() => nextLevel()}
                             className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">
-                                <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton}}></span>
-                            </button>
+                            <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
+                        </button>
                     </> :
                     <>
                         <button onClick={nextLevel()}></button>
