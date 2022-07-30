@@ -3,7 +3,7 @@ import Performance from './screens/Performance'
 
 function App() {
   return (
-    <div className='w-full h-screen audience'>
+    <div className='w-full audience'>
       
       <Performance />
     </div>

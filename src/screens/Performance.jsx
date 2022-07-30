@@ -14,6 +14,7 @@ function Performance() {
     const [addition, setAddition] = useState(undefined)
     const [tag, setTag] = useState()
     const [audience, showAudience] = useState(true)
+    const [window, setWindowWidth] = useState($('window').width())
 
     const nextLevel = () => {
         if (screens.length - 1 > level) {
@@ -44,8 +45,8 @@ function Performance() {
     }
 
     return (
-        <div className={`main-content ${level === 0 ? "start-level" : ""}`}>
-            {screens[level].visiblePeople && <AudienceBg visible={screens[level].visiblePeople} />}
+        <div className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
+            {screens[level].visiblePeople && <AudienceBg visible={window > 891 ? screens[level].visiblePeople : screens[level].visiblePeopleMob} />}
             <>
                 {screens[level].type === 'start' ?
                     <Start

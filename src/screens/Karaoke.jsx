@@ -62,7 +62,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
             <div className="anser_inner">
                 {addition == undefined ? <>
                     <div className="question_block mx-auto p-8">
-                        <p className="karaoke-text">
+                        <p className="karaoke-text karaoke">
                             <span className={`violet ${stricked.indexOf('Короче') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('Короче')}>Короче</span>
                             <span className={`violet ${stricked.indexOf('дискурсивные') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('дискурсивные')}>дискурсивные</span> слова, дискурсивы
                             <span className={`violet ${stricked.indexOf('или') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('или')}>или</span> «слова-паразиты» – это
@@ -77,7 +77,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                             <span className={`violet ${stricked.indexOf('речевой') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('речевой')}>речевой</span> культурой, или,
                             <span className={`violet ${stricked.indexOf('значит') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('значит')}>значит</span>, в связи с тем, что
                             <span className={`violet ${stricked.indexOf('говорящий') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('говорящий')}>говорящий</span>,
-                            <span className={`violet ${stricked.indexOf('так сказать') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('так сказать')}>так сказать</span>,
+                            <span className={`violet ${stricked.indexOf('так сказать') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('так сказать')}>так сказать</span><span>,</span>
                             <span className={`violet ${stricked.indexOf('в принципе') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в принципе')}>в принципе</span> не решается высказать свои мысли.</p>
                     </div>
                     <div className="answers flex gap-4 mt-4">

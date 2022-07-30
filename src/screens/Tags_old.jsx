@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TagsFull from "../components/TagsFull";
 
 
 function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
@@ -11,15 +10,29 @@ function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
     return (
         <div className="tags_container">
             {addition == undefined ?
-                <>
-                    <TagsFull selectTopic={selectTopic} activeTag={activeTag} />
+                <div className=" grid grid-cols-4 gap-4">
+                    {tags.map(
+                        (tag, id) =>
+                        (
+                            <button
+                                onClick={() => selectTopic(id)}
+                                className={`tag rounded-sm shadow-md px-4 py-2 cursor-pointer hover:bg-slate-50 ${activeTag == id ? "selected" : ""}`}
+                                key={id}
+                                style={{
+                                    background: tag.bg,
+                                    zoom: tag.zoom,
+                                    color: tag.font
+                                }}
+                                dangerouslySetInnerHTML={{ __html: tag.name }} />
+                        )
+                    )}
                     <button
                         onClick={() => setTag()}
                         disabled={activeTag === undefined ? true : false}
                         className="block mx-auto mt-4 shadow-sm bg-slate-100 px-4 py-2 rounded-md tag-btn">
                         <span className="relative block" dangerouslySetInnerHTML={{ __html: addBtn }}></span>
-                    </button></>
-                :
+                    </button>
+                </div> :
                 <div className="addition_inner">
                     <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }} />
                     <button

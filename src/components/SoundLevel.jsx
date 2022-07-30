@@ -15,7 +15,10 @@ function SoundLevel({ setAddition }) {
 
     return (
         <div className="sound-level ">
-            <input type='range' id="sound" name="sound" value={level} onChange={e => setLevel(e.target.value)} onMouseUp={e => checkLevel(e)} />
+            <input type='range' id="sound" name="sound" value={level} 
+            onChange={e => setLevel(e.target.value)} 
+            onTouchEnd={e=>checkLevel(e)}
+            onMouseUp={e => checkLevel(e)} />
             <label htmlFor="sound"></label>
         </div>
     )

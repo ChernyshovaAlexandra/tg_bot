@@ -1,31 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
 import Draggable, { DraggableCore } from "react-draggable";
-
+import $ from 'jquery'
 
 function EyeContact({ nextLevel }) {
     let sectionsInitial = [{ contact: false }, { contact: false }, { contact: false }]
     const [sections, setContact] = useState(sectionsInitial)
     const [dragged, setDragged] = useState(false)
     const draggableRef = useRef()
-
+    const [coordinates, setCoordinates] = useState([])
 
     const ondrag = () => {
         setDragged(true)
     }
     useEffect(() => {
+        let arr = []
+        
         if (dragged) {
             setTimeout(() => {
                 setContact([{ contact: true }, { contact: false }, { contact: false }])
-            }, 1500)
+            }, 1700)
             setTimeout(() => {
                 setContact([{ contact: true }, { contact: true }, { contact: false }])
-            }, 3000)
+            }, 4200)
             setTimeout(() => {
                 setContact([{ contact: true }, { contact: true }, { contact: true }])
                 nextLevel()
-            }, 4500)
+            }, 5500)
+            
         }
     }, [dragged])
+    
     return (
         <div className="w-full h-full eye-contact flex">
             <div className="grid grid-cols-3 w-full h-full eye-contact">
