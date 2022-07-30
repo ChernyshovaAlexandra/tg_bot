@@ -73,6 +73,10 @@
         height: calc(var(--vh, 1vh) * 100);
         height: fit-content;
     }
+    @media screen and (max-width: 600px) {
+        height: calc(var(--vh, 1vh) * 100);
+        overflow: hidden;
+    }
 }
 .tags-svg {
     width: 100%;
@@ -661,6 +665,28 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
             top: 2.5rem;
             left: 3rem;
         }
+        @media screen and (max-width: 830px) and (max-height: 1190px) {
+            width: 12rem;
+            height: 4rem;
+            left: 5.5rem;
+            top: 4.5rem;
+        }
+        @media screen and (max-width: 415px) and (max-height: 899px) {
+            width: 140px;
+            height: 50px;
+            left: 3rem;
+            top: 3rem;
+        }
+        @media screen and (max-width: 375px) and (max-height: 667px) {
+            width: 120px;
+            top: 5rem;
+            left: 4rem;
+        }
+        @media screen and (max-width: 375px) and (max-height: 667px) {
+            width: 100px;
+            top: 2rem;
+            left: 3rem;
+        }
     }
     @media screen and (max-width: 1200px) {
         max-width: 100%;
@@ -678,6 +704,7 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
             align-self: flex-start;
         }
     }
+
     .chel {
         background: url(../img/chel.png) no-repeat center;
         background-size: contain;
@@ -699,9 +726,6 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
             top: 1rem;
         }
         @media screen and (max-width: 480px) {
-            width: 79%;
-            height: 329px;
-            left: -2rem;
             max-width: unset;
             max-height: unset;
         }
@@ -710,6 +734,55 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
         align-self: center;
         color: #fff;
         font-size: 1.5rem;
+    }
+    @media screen and (max-width: 830px) and (max-height: 1190px) {
+        padding: 8rem 8rem 0;
+        .chel {
+            height: 600px;
+            width: 390px;
+            bottom: 1rem;
+            left: -6.5rem;
+            margin-top: 3rem;
+        }
+    }
+    @media screen and (max-width: 780px) and (max-height: 1050px) {
+        padding: 8rem 6rem 0;
+        .chel {
+            height: 430px;
+            top: auto;
+        }
+    }
+    @media screen and (max-width: 420px) and (max-height: 920px) {
+        padding: 8.5rem 2rem 0;
+        .chel {
+            width: 300px;
+            height: 370px;
+            margin-top: 3rem;
+            bottom: 1rem;
+            left: -1.5rem;
+        }
+    }
+    @media screen and (max-width: 399px) and (max-height: 860px) {
+        .chel {
+            height: 335px;
+        }
+    }
+    @media screen and (max-width: 375px) and (max-height: 667px) {
+        padding-top: 7rem;
+        .chel {
+            height: 225px;
+            margin-top: 1.8rem;
+            bottom: 0.5rem;
+            left: -4.5rem;
+        }
+    }
+    @media screen and (max-width: 365px) and (max-height: 745px) {
+        .chel {
+            height: 256px;
+            margin-top: 2rem;
+            bottom: 0.5rem;
+            left: -4rem;
+        }
     }
 }
 h2 {
