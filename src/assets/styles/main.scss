@@ -13,9 +13,14 @@
     src: url("../fonts/FavoritPro/FavoritPro-Regular.otf") format("OpenType");
 }
 @font-face {
-    font-family: "Favorit Pro";
+    font-family: "Favorit Pro Bold";
     src: url("../fonts/FavoritPro/FavoritPro-Bold.otf") format("OpenType");
     font-weight: bold;
+}
+@font-face {
+    font-family: "Favorit Pro Book";
+    src: url("../fonts/FavoritPro/FavoritPro-Book.otf") format("OpenType");
+    font-weight: 350;
 }
 .audience {
     padding: 50px 0;
@@ -34,7 +39,7 @@
     max-width: 95%;
     margin: auto;
     height: fit-content;
-    margin-top: 5rem;
+    margin-top: 2.3rem;
     max-height: 80vh; /* Fallback for browsers that do not support Custom Properties */
     height: calc(var(--vh, 1vh) * 80);
     @media screen and (max-width: 890px) {
@@ -44,9 +49,9 @@
         display: none;
         @media screen and (max-width: 890px) {
             position: absolute;
-            display: block !important;
+            display: block;
             max-width: 100%;
-            max-height: 100%;
+            // max-height: 100%;
             height: calc(100vh - 120px);
         }
     }
@@ -61,9 +66,10 @@
 #root {
     background: #ebd8d1;
     height: 100%;
+    min-height: 100vh;
+
     @media screen and (max-width: 890px) {
         height: unset;
-        min-height: 100vh;
         height: calc(var(--vh, 1vh) * 100);
         height: fit-content;
     }
@@ -111,7 +117,7 @@
         flex-wrap: wrap;
         justify-content: end;
         margin-top: -2rem;
-
+        width: fit-content;
         @media screen and (max-width: 890px) {
             max-width: 100%;
             max-height: 83vh;
@@ -120,15 +126,15 @@
     }
 }
 ::-webkit-slider-thumb {
-    -webkit-appearance: none!important;
+    -webkit-appearance: none !important;
     height: 59px !important;
     width: 59px !important;
     background: transparent !important;
     border-color: transparent !important;
     outline: none !important;
     box-shadow: none !important;
-    color: transparent!important;
-    border-radius: 0%!important;
+    color: transparent !important;
+    border-radius: 0% !important;
     background: url(../img/speaker.png) no-repeat center !important;
     background-size: contain !important;
     cursor: pointer;
@@ -152,6 +158,25 @@
         background-size: contain;
         position: absolute;
         cursor: pointer;
+        @media screen and (max-width: 890px) {
+            width: 6rem;
+            height: 6rem;
+        }
+    }
+    &.flex {
+        justify-content: center;
+    }
+    &.grid {
+        max-width: 97%;
+        margin: -0.2rem auto;
+        @media screen and (min-width: 890px) and (max-height: 865px) {
+        }
+    }
+    @media screen and (max-width: 890px) {
+        &.grid {
+            grid-template-columns: 33%;
+            place-items: center;
+        }
     }
     .section {
         transition: all 0.3s ease-in-out;
@@ -162,6 +187,11 @@
         top: 0;
         bottom: 0;
         margin: auto;
+        @media screen and (max-width: 890px) {
+            &:not(:first-child) {
+                display: none;
+            }
+        }
         &:nth-child(3) {
             left: calc(100% / 3 * 2);
         }
@@ -171,6 +201,9 @@
 
         &:not(:last-child) {
             border-right: 3px solid gray;
+            @media screen and (max-width: 890px) {
+                border: none;
+            }
         }
         &.contacted {
             backdrop-filter: grayscale(0);
@@ -188,6 +221,7 @@
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     @media screen and (max-width: 1200px) {
         max-width: 100%;
@@ -199,6 +233,8 @@
         width: 100%;
         min-height: 100%;
         height: auto;
+        position: relative;
+        min-height: 78vh;
     }
     &.start-level {
         background: url(../img/startScreen.jpg) no-repeat top;
@@ -358,6 +394,16 @@
     height: calc((var(--vh, 1vh) * 100) - 50px);
     backdrop-filter: blur(4px);
     animation: appearance 0.3s ease-in;
+    @media screen and (min-width: 891px) and (max-height: 792px) {
+        height: calc(100vh - 50px);
+        padding-top: 7rem;
+
+        @media not all and (min-resolution: 0.001dpcm) {
+            @supports (-webkit-appearance: none) {
+                height: calc(var(--vh, 1vh) * 100 - 50px);
+            }
+        }
+    }
     @media screen and (max-width: 890px) {
         width: 100%;
         min-height: 100vh;
@@ -391,6 +437,9 @@
     right: 150px;
     top: 50px;
     font-size: 60px;
+    @media screen and (min-width: 891px) and (max-height: 792px) {
+        top: 1rem;
+    }
     @media screen and (max-width: 490px) {
         top: 2.5rem;
         right: 1rem;
@@ -460,8 +509,19 @@ button.block {
     }
     &.tag-btn {
         position: absolute;
-        bottom: 0;
+        bottom: 4rem;
         right: 12%;
+        @media screen and (min-width: 891px) and (max-height: 792px) {
+            bottom: 2rem;
+        }
+        @media screen and (min-width: 891px) and (max-height: 670px) {
+            bottom: 1.5rem;
+            @media not all and (min-resolution: 0.001dpcm) {
+                @supports (-webkit-appearance: none) {
+                    bottom: 0.5rem;
+                }
+            }
+        }
         @media screen and (max-width: 890px) {
             right: 3rem;
             bottom: 2rem;
@@ -517,11 +577,20 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
     text-align: center;
     user-select: none;
     border-radius: 1.8rem;
-    max-width: 85%;
+    max-width: 864px;
+    width: 90%;
 
     p {
         line-height: 1.5;
         font-size: 1.8rem;
+        font-weight: 350;
+        font-family: "Favorit Pro Book";
+        @media screen and (max-height: 1100px) {
+            font-size: 1.5rem;
+            &.karaoke-text {
+                font-size: 1.8rem;
+            }
+        }
         @media screen and (max-width: 890px) {
             font-size: 1.5rem;
         }
@@ -531,10 +600,10 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
     }
     @media screen and (max-height: 1008px) {
         font-size: 1.5rem;
-        max-width: 68%;
+        width: 80%;
     }
     @media screen and (max-width: 890px) {
-        max-width: 90%;
+        width: 90%;
     }
 }
 .answers {
@@ -646,6 +715,7 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
 h2 {
     font-size: 55px;
     font-weight: bold;
+    font-family: "Favorit Pro Bold";
     line-height: 1.2;
     margin-bottom: 1.5rem;
     @media screen and (max-height: 1008px) {
@@ -666,11 +736,16 @@ h2 {
     }
 }
 p {
+    font-weight: 350;
+    font-family: "Favorit Pro Book";
     &:not(:last-child) {
         margin-bottom: 2.5rem;
+        @media screen and (max-height: 1008px) {
+            margin-bottom: 1.5rem;
+        }
     }
     font-weight: 350;
-    @media screen and (max-height: 1008px) {
+    @media screen and (max-height: 1100px) {
         font-size: 1.5rem;
     }
     @media screen and (max-width: 890px) {

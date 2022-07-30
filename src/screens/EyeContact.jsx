@@ -14,8 +14,8 @@ function EyeContact({ nextLevel }) {
     }
     useEffect(() => {
         let arr = []
-        
-        if (dragged) {
+
+        if (dragged && window.innerWidth > 891) {
             setTimeout(() => {
                 setContact([{ contact: true }, { contact: false }, { contact: false }])
             }, 1700)
@@ -26,10 +26,17 @@ function EyeContact({ nextLevel }) {
                 setContact([{ contact: true }, { contact: true }, { contact: true }])
                 nextLevel()
             }, 5500)
-            
+
+        }
+        if (dragged && window.innerWidth < 891) {
+            setTimeout(() => {
+                setContact([{ contact: true }, { contact: false }, { contact: false }])
+                nextLevel()
+
+            }, 1700)
         }
     }, [dragged])
-    
+
     return (
         <div className="w-full h-full eye-contact flex">
             <div className="grid grid-cols-3 w-full h-full eye-contact">

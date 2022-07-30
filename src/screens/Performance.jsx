@@ -14,7 +14,6 @@ function Performance() {
     const [addition, setAddition] = useState(undefined)
     const [tag, setTag] = useState()
     const [audience, showAudience] = useState(true)
-    const [window, setWindowWidth] = useState($('window').width())
 
     const nextLevel = () => {
         if (screens.length - 1 > level) {
@@ -25,10 +24,6 @@ function Performance() {
             setLevel(0);
             setAddition(undefined)
         }
-        showAudience(false);
-        setTimeout(() => {
-            showAudience(true)
-        }, 10)
     }
     const showPeople = () => {
         setTimeout(() => {
@@ -37,16 +32,12 @@ function Performance() {
     }
     const selectTopic = (topic) => {
         setTag(topic);
-        showAudience(false);
-        setTimeout(() => {
-            showAudience(true)
-        }, 10);
         setAddition(0)
     }
 
     return (
         <div className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
-            {screens[level].visiblePeople && <AudienceBg visible={window > 891 ? screens[level].visiblePeople : screens[level].visiblePeopleMob} />}
+            {screens[level].visiblePeople && <AudienceBg visible={window.innerWidth > 891 ? screens[level].visiblePeople : screens[level].visiblePeopleMob} />}
             <>
                 {screens[level].type === 'start' ?
                     <Start

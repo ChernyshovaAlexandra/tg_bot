@@ -47,7 +47,6 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
     const checkResult = () => {
         handlePause()
         if (result.errors <= 2 && result.correct >= 4) {
-            console.log(result)
             setAddition(0)
         }
         else {
@@ -65,7 +64,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                         <p className="karaoke-text karaoke">
                             <span className={`violet ${stricked.indexOf('Короче') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('Короче')}>Короче</span>
                             <span className={`violet ${stricked.indexOf('дискурсивные') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('дискурсивные')}>дискурсивные</span> слова, дискурсивы
-                            <span className={`violet ${stricked.indexOf('или') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('или')}>или</span> «слова-паразиты» – это
+                            <span className={`violet ${stricked.indexOf('или') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('или')}>или</span> «слова-паразиты»&nbsp;– это
                             <span className={`violet ${stricked.indexOf('слова') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('слова')}>слова</span> или словосочетания,
                             <span className={`violet ${stricked.indexOf('как бы') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('как бы')}>как бы</span> вносимые
                             <span className={`violet ${stricked.indexOf('в речь') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в речь')}>в речь</span>, но не несущие
