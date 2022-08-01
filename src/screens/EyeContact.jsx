@@ -7,15 +7,17 @@ function EyeContact({ nextLevel }) {
     const [sections, setContact] = useState(sectionsInitial)
     const [dragged, setDragged] = useState(false)
     const draggableRef = useRef()
-    const [coordinates, setCoordinates] = useState([])
+    const [grayPanel, setPanel] = useState(false)
 
     const ondrag = () => {
         setDragged(true)
     }
     useEffect(() => {
-        let arr = []
+        setTimeout(() => {
+            setPanel(true)
+        }, 1300)
 
-        if (dragged && window.innerWidth > 891) {
+        if (dragged ) {
             setTimeout(() => {
                 setContact([{ contact: true }, { contact: false }, { contact: false }])
             }, 1700)
@@ -28,19 +30,21 @@ function EyeContact({ nextLevel }) {
             }, 5500)
 
         }
-        if (dragged && window.innerWidth < 891) {
-            setTimeout(() => {
-                setContact([{ contact: true }, { contact: false }, { contact: false }])
-                nextLevel()
+        // if (dragged && window.innerWidth < 891) {
+        //     setTimeout(() => {
+        //         setContact([{ contact: true }, { contact: false }, { contact: false }])
+        //         setTimeout(() => {
+        //             nextLevel()
+        //         }, 1600)
 
-            }, 1700)
-        }
+        //     }, 2500)
+        // }
     }, [dragged])
 
     return (
         <div className="w-full h-full eye-contact flex">
             <div className="grid grid-cols-3 w-full h-full eye-contact">
-                {sections && sections.length ?
+                {sections && grayPanel && sections.length ?
                     sections.map((item, id) => (
                         <div key={id} className={`section grid grid-rows-3 ${item.contact ? "contacted" : ""}`}>
                             <div className={`${'section-row' + id + '_1'}`}></div>
@@ -49,9 +53,9 @@ function EyeContact({ nextLevel }) {
                         </div>
                     )) : <></>
                 }
-                <Draggable ref={draggableRef} onDrag={ondrag}>
+                {grayPanel && <Draggable ref={draggableRef} onDrag={ondrag}>
                     <div className="eye"></div>
-                </Draggable>
+                </Draggable>}
             </div>
         </div>
     )

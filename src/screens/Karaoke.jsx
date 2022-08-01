@@ -61,10 +61,11 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
             <div className="anser_inner">
                 {addition == undefined ? <>
                     <div className="question_block mx-auto p-8">
+                        <h2>Отметь лишние слова!</h2>
                         <p className="karaoke-text karaoke">
                             <span className={`violet ${stricked.indexOf('Короче') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('Короче')}>Короче</span>
-                            <span className={`violet ${stricked.indexOf('дискурсивные') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('дискурсивные')}>дискурсивные</span> слова, дискурсивы
-                            <span className={`violet ${stricked.indexOf('или') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('или')}>или</span> «слова-паразиты»&nbsp;– это
+                            <span className={`violet ${stricked.indexOf('дискурсивные') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('дискурсивные')}>дискурсивные</span> слова,
+                            <span className={`violet ${stricked.indexOf('или') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('или')}>или</span> «слова паразиты»&nbsp;– это
                             <span className={`violet ${stricked.indexOf('слова') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('слова')}>слова</span> или словосочетания,
                             <span className={`violet ${stricked.indexOf('как бы') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('как бы')}>как бы</span> вносимые
                             <span className={`violet ${stricked.indexOf('в речь') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в речь')}>в речь</span>, но не несущие
@@ -74,8 +75,8 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                             <span className={`violet ${stricked.indexOf('часто') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('часто')}>часто</span> наблюдаются в связи с
                             <span className={`violet ${stricked.indexOf('типа') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('типа')}>типа</span> невысокой
                             <span className={`violet ${stricked.indexOf('речевой') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('речевой')}>речевой</span> культурой, или,
-                            <span className={`violet ${stricked.indexOf('значит') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('значит')}>значит</span>, в связи с тем, что
-                            <span className={`violet ${stricked.indexOf('говорящий') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('говорящий')}>говорящий</span>,
+                            <span className={`violet ${stricked.indexOf('значит') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('значит')}>значит</span>, 
+                            <span className={`violet ${stricked.indexOf('в связи с тем') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в связи с тем')}>в связи с тем</span>, что говорящий,
                             <span className={`violet ${stricked.indexOf('так сказать') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('так сказать')}>так сказать</span><span>,</span>
                             <span className={`violet ${stricked.indexOf('в принципе') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в принципе')}>в принципе</span> не решается высказать свои мысли.</p>
                     </div>

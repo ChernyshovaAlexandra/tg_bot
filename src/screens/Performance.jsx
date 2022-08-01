@@ -10,10 +10,9 @@ import $ from 'jquery'
 
 
 function Performance() {
-    const [level, setLevel] = useState(0)
+    const [level, setLevel] = useState(0) //7
     const [addition, setAddition] = useState(undefined)
     const [tag, setTag] = useState()
-    const [audience, showAudience] = useState(true)
 
     const nextLevel = () => {
         if (screens.length - 1 > level) {
