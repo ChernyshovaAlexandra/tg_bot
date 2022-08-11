@@ -58,7 +58,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
         <div className="interactive">
             {addition == undefined && <Countdown ref={clockRef} renderer={renderer} date={date} checkResult={checkResult}> </Countdown>}
 
-            <div className="anser_inner">
+            <div className="answer_inner">
                 {addition == undefined ? <>
                     <div className="question_block mx-auto p-8">
                         <h2>Отметь лишние слова!</h2>
@@ -80,7 +80,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                             <span className={`violet ${stricked.indexOf('так сказать') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('так сказать')}>так сказать</span><span>,</span>
                             <span className={`violet ${stricked.indexOf('в принципе') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в принципе')}>в принципе</span> не решается высказать свои мысли.</p>
                     </div>
-                    <div className="answers flex gap-4 mt-4">
+                    <div className="answers flex gap-4">
                         <button className="block mx-auto shadow-sm bg-slate-100 rounded-md"
                             disabled={!result.errors && !result.correct}
                             onClick={checkResult}

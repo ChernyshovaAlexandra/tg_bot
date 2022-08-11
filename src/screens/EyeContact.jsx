@@ -27,7 +27,7 @@ function EyeContact({ nextLevel }) {
             setTimeout(() => {
                 setContact([{ contact: true }, { contact: true }, { contact: true }])
                 nextLevel()
-            }, 5500)
+            }, 6500)
 
         }
         // if (dragged && window.innerWidth < 891) {

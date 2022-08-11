@@ -1,13 +1,30 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import SoundLevel from "../components/SoundLevel";
 
 
-function Standart({ addition, question, answers, setAddition, nextLevel, sound, people }) {
+function Standart({ addition, question, answers, setAddition, nextLevel, sound, people, level, user_id }) {
+    const [email, setEmail] = useState()
+    const sendEmail = (e) => {
+        e.preventDefault()
+        axios({
+            method: 'post',
+            url: 'https://back.lecturerleage.ru/form_save',
+            data: {
+                email: email,
+                user_id: user_id
+            }
+        })
+        .catch(
+            error => console.log(error.message)
+        )
+        nextLevel()
+    }
     return (
         <> {addition == undefined ?
             <div className="answer_inner">
                 <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: question }}></div>
-                <div className="answers flex gap-4 mt-4">
+                <div className="answers flex gap-4">
                     {sound ?
                         <SoundLevel setAddition={setAddition} />
                         :
@@ -28,15 +45,32 @@ function Standart({ addition, question, answers, setAddition, nextLevel, sound, 
                 </div>
             </div> :
             <div className="addition_inner">
-                {answers[addition].addition ?
-                    <>
-                        <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }}></div>
-                        <button
-                            onClick={() => nextLevel()}
-                            className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">
-                            <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
-                        </button>
-                    </> :
+                {answers && answers[addition].addition ?
+                    level === 15 ?
+                        <form className="answer_inner" onSubmit={e => sendEmail(e)}>
+                            <div className="question_block mx-auto p-8">
+                                <p dangerouslySetInnerHTML={{ __html: answers[addition].addition }}></p>
+                                <input type="email" placeholder="Введите свою почту" value={email}
+                                    onChange={e => setEmail(e.target.value)} />
+                            </div>
+                            <button
+                                type="submit"
+                                className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md"
+                                disabled={!email}
+                                >
+                                <span className="relative block"
+                                    dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
+                            </button>
+                        </form>
+                        :
+                        <>
+                            <div className="question_block mx-auto p-8" dangerouslySetInnerHTML={{ __html: answers[addition].addition }}></div>
+                            <button
+                                onClick={() => nextLevel()}
+                                className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md">
+                                <span className="relative block" dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
+                            </button>
+                        </> :
                     <>
                         <button onClick={nextLevel()}></button>
                     </>

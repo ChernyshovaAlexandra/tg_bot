@@ -8,9 +8,9 @@ function Start({ addition, question, answers, setAddition, nextLevel }) {
             {addition == undefined ?
                 <div className="start-container">
                     <div className="chel"></div>
-                    <div>
+                    <div className="w-full">
                         <div dangerouslySetInnerHTML={{ __html: question }}></div>
-                        <div className="answers flex gap-4 mt-4">
+                        <div className="answers flex gap-4">
                             {answers.map(
                                 (ans, id) => (
                                     <button

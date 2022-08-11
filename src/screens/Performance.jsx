@@ -10,10 +10,12 @@ import $ from 'jquery'
 
 
 function Performance() {
-    const [level, setLevel] = useState(0) //7
+    const [level, setLevel] = useState(0)
     const [addition, setAddition] = useState(undefined)
     const [tag, setTag] = useState()
-
+    let url = new URL(window.location.href);
+    let param = url.searchParams.get("user_id");
+  
     const nextLevel = () => {
         if (screens.length - 1 > level) {
             setLevel(level + 1);
@@ -33,11 +35,13 @@ function Performance() {
         setTag(topic);
         setAddition(0)
     }
-
+console.log(window.innerWidth)
     return (
         <div className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
-            {screens[level].visiblePeople && <AudienceBg visible={window.innerWidth > 891 ? screens[level].visiblePeople : screens[level].visiblePeopleMob} />}
+
+            {window.innerWidth && screens[level].visiblePeople && <AudienceBg visible={window.innerWidth > 891 ? screens[level].visiblePeople : screens[level].visiblePeopleMob} />}
             <>
+
                 {screens[level].type === 'start' ?
                     <Start
                         addition={addition}
@@ -82,6 +86,8 @@ function Performance() {
                                                 setAddition={setAddition}
                                                 nextLevel={nextLevel}
                                                 people={screens[level].people}
+                                                level={level}
+                                                user_id={param || ''}
                                             />
                                         </div>
                                         :
