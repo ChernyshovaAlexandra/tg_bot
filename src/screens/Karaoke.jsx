@@ -55,7 +55,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
     }
 
     return (
-        <div className="interactive">
+        <div className="interactive" style={{ height: window.innerWidth < 891 ? window.innerHeight : ''}}>
             {addition == undefined && <Countdown ref={clockRef} renderer={renderer} date={date} checkResult={checkResult}> </Countdown>}
 
             <div className="answer_inner">

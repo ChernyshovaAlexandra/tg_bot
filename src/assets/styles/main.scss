@@ -61,7 +61,7 @@ p {
     color: #fff;
     font-size: 1.5rem;
     line-height: 110%;
-    &:not(.wh){
+    &:not(.wh) {
         color: #000;
     }
     &:not(:last-child) {
@@ -184,13 +184,15 @@ button.block {
     background: url(../img/pattern-main.png) no-repeat center, linear-gradient(38.95deg, #f28f99 31.35%, #ffc500 99.54%);
     background-blend-mode: screen;
     background-size: cover;
-    min-height: 100vh;
+    @media screen and (min-width: 891px) {
+        min-height: 100vh;
+        min-height: calc((var(--vh, 1vh) * 100));
+    }
+
     width: 100vw;
     min-width: 320px;
     position: relative;
-    @media screen and (max-width: 891px){
 
-    }
     &::before {
         content: "";
         position: absolute;
@@ -204,9 +206,8 @@ button.block {
         height: 100%;
         background: url(../img/after-main.png) no-repeat center;
         background-size: 100%;
-        @media screen and (max-width: 891px){
-            background: url(../img/after-main-mob.png) no-repeat center;
-            background-size: 100%;
+        @media screen and (max-width: 891px) {
+            display: none;
         }
     }
 }
@@ -215,7 +216,6 @@ button.block {
     max-height: 1024px;
     min-height: 667px;
     width: 100%;
-
     aspect-ratio: 4 / 3;
     margin: 0 auto;
     @media (orientation: portrait) and (max-width: 890px) {
@@ -277,15 +277,31 @@ button.block {
         @media (orientation: portrait) {
             background: url(../img/startScreen-mob.jpg);
             background-size: 100% 100%;
+            background: none;
+            > svg {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
         }
         @media (orientation: landscape) and (max-width: 890px) {
             aspect-ratio: 9 / 13;
             background: url(../img/startScreen-mob.jpg);
             background-size: 100% 100%;
+            background: none;
+            > svg {
+                height: 100vh;
+                position: fixed;
+                left: 0;
+                top: 0;
+            }
         }
-        @media (orientation: portrait) and (min-height: 916px) {
-            aspect-ratio: 9 / 13;
-            max-height: unset;
+        @media (orientation: portrait) and (max-width: 891px) {
+            aspect-ratio: unset !important;
+            height: auto !important;
+            max-height: unset !important;
+            min-height: unset !important;
+            place-items: start !important;
         }
 
         @media (orientation: landscape) and (max-width: 890px) {
@@ -306,6 +322,9 @@ button.block {
         @media (max-width: 891px) and (max-height: 759px) {
             padding-top: 5rem;
         }
+        @media (max-width: 391px) and (max-height: 700px) {
+            padding-top: 2rem;
+        }
         .start-container {
             display: flex;
             justify-content: center;
@@ -314,14 +333,20 @@ button.block {
             max-width: 85%;
             margin: auto;
             position: relative;
-            @media (orientation: portrait) {
-                display: grid;
-                grid-template-rows: 1fr auto;
-                .chel {
-                    grid-area: 2 / 1;
-                    place-self: end start;
-                }
+            @media (orientation: portrait) and (max-width: 890px) {
+                // top: 3rem;
+                aspect-ratio: unset !important;
+                height: auto !important;
+                max-height: unset !important;
+                min-height: unset !important;
+                place-items: start !important;
             }
+            @media (orientation: portrait) and (max-width: 890px) and (max-height: 761px) {
+                top: 4rem;
+            }
+            // @media (orientation: portrait) and (max-width: 890px) and (max-height:710px){
+            //     top: 3rem;
+            // }
             @media (orientation: landscape) and (max-width: 890px) {
                 display: grid;
                 grid-template-rows: 1fr auto;
@@ -336,13 +361,14 @@ button.block {
             }
             @media screen and (max-width: 1000px) {
                 max-width: 75%;
-                overflow-x: hidden;
             }
             @media (orientation: landscape) and (min-height: 916px) {
                 max-height: 1080px;
             }
             @media (orientation: portrait) and (max-height: 915px) {
                 height: calc((var(--vh, 1vh) * 100) - 10rem);
+                gap: 1rem;
+                aspect-ratio: unset;
             }
         }
         .chel {
@@ -365,12 +391,15 @@ button.block {
                 min-width: 200px;
                 flex: unset;
             }
-            @media (orientation: portrait) and (max-height: 770px) and (max-width: 891px) and(min-width: 376px) {
+            @media (orientation: portrait) and (max-height: 770px) and (max-width: 891px) and (min-width: 376px) {
                 min-height: 250px;
                 min-width: 90px;
+                display: none !important;
             }
-            @media screen and (max-width: 380px) and (min-height: 665px) {
-                min-width: 156px;
+            @media screen and (max-width: 891px) {
+                display: none !important;
+                min-height: 220px;
+                min-width: 90px;
             }
         }
     }
@@ -445,12 +474,14 @@ button.block {
     }
     @media screen and (orientation: portrait) and (max-width: 767px) {
         place-items: end center;
+        grid-template-columns: 1fr;
         .addition_inner,
         .answer_inner {
             height: 100%;
             display: grid;
             grid-template-rows: 1fr auto;
             place-items: end center;
+            // grid-template-columns: 95%;
         }
     }
     @media screen and (orientation: portrait) and (max-width: 376px) {
@@ -483,16 +514,15 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
     min-height: calc(667px * 0.8);
     @media screen and (max-width: 890px) {
         display: none;
+        min-height: unset;
     }
     &-mob {
         display: none;
         @media screen and (max-width: 890px) {
             display: block !important;
-            max-width: 76%;
-            height: calc((var(--vh, 1vh) * 100) - 14rem);
-            min-height: calc(667px - 14rem);
-            height: auto;
-            width: 100%;
+            max-height: unset;
+            height: 100%;
+            width: auto;
             position: relative;
             margin: auto;
         }
@@ -512,6 +542,9 @@ input[type="email"] {
         font-size: 18px;
         text-align: center;
         color: #c4c4c4;
+    }
+    @media screen and (max-width: 890px) {
+        width: 100%;
     }
 }
 .tag {
@@ -557,6 +590,7 @@ input[type="email"] {
         @media screen and (min-width: 891px) {
             min-width: 80%;
         }
+
         &-active {
             height: fit-content;
             min-height: unset;
@@ -565,9 +599,13 @@ input[type="email"] {
             }
         }
         @media screen and (max-width: 890px) {
+            height: unset;
+            max-height: unset;
+            min-height: unset;
+            position: relative;
+            margin: 0 auto;
             max-width: 100%;
-            min-height: 667px;
-            height: calc((var(--vh, 1vh) * 100) - 14rem);
+            place-self: start;
             &-active {
                 min-height: unset;
                 place-self: end;
@@ -811,45 +849,23 @@ input[type="email"] {
             @media screen and (max-width: 1200px) {
                 max-width: 68%;
             }
-            &::before,
-            &::after {
-                content: "";
-                display: block;
+            .plus,
+            .minus {
                 position: absolute;
-                width: 31px;
-                height: 30px;
+                left: -2.5rem;
                 top: 0;
                 bottom: 0;
                 margin: auto;
-                left: -55px;
-                background: url(../img/minus.png) no-repeat center;
-                background-size: contain;
-                @media screen and (max-width: 890px) {
-                    width: 2rem;
-                    height: 1.5rem;
-                    left: -2rem;
-                }
-                @media screen and (max-width: 490px) {
-                    width: 2rem;
-                    height: 1.4rem;
+                width: 2.3rem;
+                height: 2.3rem;
+                @media screen and (min-width: 890px) {
+                    width: 3rem;
+                    height: 3rem;
                 }
             }
-            &::after {
+            .plus {
                 left: auto;
-                background: url(../img/plus.png) no-repeat center;
-                background-size: contain;
-                height: 60px;
-                width: 50px;
-                right: -65px;
-                @media screen and (max-width: 890px) {
-                    width: 2.5rem;
-                    height: 2.5rem;
-                    right: -2.25rem;
-                }
-                @media screen and (max-width: 490px) {
-                    width: 2rem;
-                    height: 2rem;
-                }
+                right: -2.5rem;
             }
         }
         &:focus {

@@ -9,7 +9,7 @@ function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
     }
     console.log(addition)
     return (
-        <div className={`tags_container ${addition === undefined ? "" : "tags_container-active"}`}>
+        <div className={`tags_container ${addition === undefined ? "" : "tags_container-active"}`} style={{ height: window.innerWidth < 891 ? window.innerHeight - 200 : ''}}>
             {addition == undefined ?
                 <>
                     <TagsFull selectTopic={selectTopic} activeTag={activeTag} />

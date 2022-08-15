@@ -37,7 +37,7 @@ function Performance() {
     }
 console.log(window.innerWidth)
     return (
-        <div className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
+        <div style={{ height: window.innerWidth < 891 ? window.innerHeight : ''}} className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
 
             {window.innerWidth && screens[level].visiblePeople && <AudienceBg visible={window.innerWidth > 891 ? screens[level].visiblePeople : screens[level].visiblePeopleMob} />}
             <>
@@ -60,7 +60,7 @@ console.log(window.innerWidth)
                                 nextLevel={nextLevel}
                                 screen={screens[level].screen} /> :
                             screens[level].type === 'sound' ?
-                                <div className="interactive">
+                                <div className="interactive" style={{ height: window.innerWidth < 891 ? window.innerHeight : ''}}>
                                     <Standart
                                         addition={addition}
                                         question={screens[level].question}
@@ -78,7 +78,7 @@ console.log(window.innerWidth)
                                     />
                                     :
                                     screens[level].type === 'standart' ?
-                                        <div className="interactive">
+                                        <div className="interactive" style={{ height: window.innerWidth < 891 ? window.innerHeight : ''}}>
                                             <Standart
                                                 addition={addition}
                                                 question={screens[level].question}
@@ -92,7 +92,7 @@ console.log(window.innerWidth)
                                         </div>
                                         :
                                         screens[level].type === 'tags' ?
-                                            <div className="interactive">
+                                            <div className="interactive" style={{ height: window.innerWidth < 891 ? window.innerHeight : ''}}>
                                                 <Tags
                                                     setTag={selectTopic}
                                                     tags={screens[level].answers[0].tags}
