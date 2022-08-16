@@ -36,7 +36,7 @@ function StartMob() {
                     <rect x="25" y="25" width={w - 50} height={h - 50} rx="25" fill="url(#paint1_linear_69_11435)" />
                     <rect x="26.5" y="26.5" width={w - 53} height={h - 53} rx="23.5" stroke="white" strokeWidth="3" />
                 </g>
-                <g style={{ transform: `scale(${(h / 990).toFixed(2)}) translate(0px, ${(844 - h) < 0 ? -(844 - h) : -(844 - h)}px)`, transformOrigin: 'bottom left' }}>
+                <g style={{ transform: `scale(${(h > 645 ? h / 990 : h > 590 ? h / 1200 : h / 1350).toFixed(2)}) translate(0px, ${(844 - h) < 0 ? -(844 - h) : -(844 - h)}px)`, transformOrigin: 'bottom left' }}>
                     <g clipPath="url(#clip1_69_11435)">
                         <path d="M144.487 577.641H24.9731V821.613H144.487V577.641Z" fill="#AB5C3A" />
                         <g style={{ mixBlendMode: "multiply" }}>
@@ -132,7 +132,7 @@ function StartMob() {
                 </clipPath>
 
             </defs>
-        </svg>
+        </svg >
 
     )
 }

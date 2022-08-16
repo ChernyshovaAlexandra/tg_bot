@@ -35,7 +35,7 @@ function Performance() {
         setTag(topic);
         setAddition(0)
     }
-console.log(window.innerWidth)
+
     return (
         <div style={{ height: window.innerWidth < 891 ? window.innerHeight : ''}} className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
 
