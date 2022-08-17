@@ -4,14 +4,14 @@ import { useEffect } from 'react';
 import $ from 'jquery'
 
 
-function StartMob({ w, h }) {
+function StartMob({ w, h, level }) {
 
     const [is_safari, SetBrowser] = useState()
     useEffect(() => {
         SetBrowser(/^((?!chrome|android).)*safari/i.test(navigator.userAgent))
     }, [])
     return (
-        <svg height={h} width={w} viewBox={`0 0 ${w} ${h}`} fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg height={level === 16 ? 'calc(var(--vh, 1vh) * 100)' : h} width={w} viewBox={`0 0 ${w} ${h}`} fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g clipPath="url(#clip0_69_11435)">
                 <rect width={w} height={h + 50} y="0" x="0" fill="url(#paint0_linear_69_11435)" />
                 <g style={{ mixBlendMode: "lighten" }} opacity="0.7">

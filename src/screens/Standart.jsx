@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import SoundLevel from "../components/SoundLevel";
 
 
-function Standart({ addition, question, answers, setAddition, nextLevel, sound, people, level, user_id }) {
+function Standart({ addition, question, answers, setAddition, nextLevel, sound, people, level, user_id, w, h }) {
     const [email, setEmail] = useState()
     const sendEmail = (e) => {
         e.preventDefault()
@@ -15,9 +15,9 @@ function Standart({ addition, question, answers, setAddition, nextLevel, sound, 
                 user_id: user_id
             }
         })
-        .catch(
-            error => console.log(error.message)
-        )
+            .catch(
+                error => console.log(error.message)
+            )
         nextLevel()
     }
     return (
@@ -57,7 +57,7 @@ function Standart({ addition, question, answers, setAddition, nextLevel, sound, 
                                 type="submit"
                                 className="block mx-auto mt-4 shadow-sm bg-slate-100 rounded-md"
                                 disabled={!email}
-                                >
+                            >
                                 <span className="relative block"
                                     dangerouslySetInnerHTML={{ __html: answers[addition].additionButton }}></span>
                             </button>

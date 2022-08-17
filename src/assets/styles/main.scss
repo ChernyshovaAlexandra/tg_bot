@@ -523,6 +523,7 @@ $mainBg: linear-gradient(27.68deg, #ffc500 -37.23%, #f28f99 104.74%), #a4f375;
         @media screen and (max-width: 890px) {
             display: block !important;
             max-height: unset;
+            max-width: 100%;
             height: 100%;
             width: auto;
             position: relative;

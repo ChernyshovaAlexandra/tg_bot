@@ -43,9 +43,14 @@ function Performance() {
         setTag(topic);
         setAddition(0)
     }
-
+    useEffect(() => {
+        if (level === 16) {
+            setSizes()
+        }
+    }, [level])
     return (
-        <div style={{ height: w < 891 ? h : '' }} className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
+        <div style={{ height: w < 891 ? level === 16 ? 'calc(var(--vh, 1vh) * 100)' : h : '' }}
+            className={`main-content ${level === 0 ? "start-level" : screens[level].type === 'eye_contact' ? "eye-container" : ""}`}>
 
             {w && screens[level].visiblePeople && <AudienceBg visible={w > 891 ? screens[level].visiblePeople : screens[level].visiblePeopleMob} />}
             <>
@@ -53,6 +58,7 @@ function Performance() {
                 {screens[level].type === 'start' ?
                     <Start
                         w={w}
+                        level={level}
                         h={h}
                         addition={addition}
                         question={screens[level].question}
@@ -94,7 +100,7 @@ function Performance() {
                                     />
                                     :
                                     screens[level].type === 'standart' ?
-                                        <div className="interactive" style={{ height: w < 891 ? h : '' }}>
+                                        <div className="interactive" style={{ height: w < 891 ? level === 16 ? 'calc(var(--vh, 1vh) * 100)' : h : '' }}>
                                             <Standart
                                                 w={w}
                                                 h={h}
@@ -110,7 +116,7 @@ function Performance() {
                                         </div>
                                         :
                                         screens[level].type === 'tags' ?
-                                            <div className="interactive" style={{ height: w < 891 ? h : '' }}>
+                                            <div className="interactive" style={{ height: w < 891 ? level === 16 ? 'calc(var(--vh, 1vh) * 100)' : h : '' }}>
                                                 <Tags
                                                     w={w}
                                                     h={h}
