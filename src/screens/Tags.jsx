@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import TagsFull from "../components/TagsFull";
 
 
-function Tags({ tags, setTag, answers, addition, nextLevel, addBtn }) {
+function Tags({ tags, setTag, answers, addition, nextLevel, addBtn, w,h }) {
     const [activeTag, setActiveTag] = useState(undefined)
     const selectTopic = (id) => {
         setActiveTag(id)
     }
 
     return (
-        <div className={`tags_container ${addition === undefined ? "" : "tags_container-active"}`} style={{ height: window.innerWidth < 891 ? window.innerHeight - 100 : ''}}>
+        <div className={`tags_container ${addition === undefined ? "" : "tags_container-active"}`} style={{ height: w < 891 ? h - 100 : ''}}>
             {addition == undefined ?
                 <>
                     <TagsFull selectTopic={selectTopic} activeTag={activeTag} />

@@ -4,13 +4,8 @@ import { useEffect } from 'react';
 import $ from 'jquery'
 
 
-function StartMob() {
-    let h = window.innerHeight
-    let w = window.innerWidth
-    useEffect(() => {
-        var vh = $('<div class="vhr" style="height:100vh; display: none;"></div>"').appendTo('body').height();
-        h = $('.vhr').height()
-    }, [])
+function StartMob({ w, h }) {
+
     const [is_safari, SetBrowser] = useState()
     useEffect(() => {
         SetBrowser(/^((?!chrome|android).)*safari/i.test(navigator.userAgent))

@@ -1,11 +1,12 @@
 import React from "react";
 
 
-function Inner({ addition, question, answers, setAddition, nextLevel, w }) {
+function Inner({ addition, question, answers, setAddition, nextLevel, w, h }) {
     return (
         <>
             {addition == undefined ?
                 <div className="start-container">
+                    {/* setheight */}
                     <div className="chel"></div>
                     <div className="w-full">
                         <div dangerouslySetInnerHTML={{ __html: question }}></div>
@@ -24,6 +25,7 @@ function Inner({ addition, question, answers, setAddition, nextLevel, w }) {
                 </div>
                 :
                 <div className="start-container">
+                    {/* setheight */}
                     {answers[addition].addition ?
                         <>
                             <div className="chel"></div>

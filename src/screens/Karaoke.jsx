@@ -4,7 +4,7 @@ import Countdown from 'react-countdown';
 
 
 
-function Karaoke({ answers, nextLevel, setAddition, addition }) {
+function Karaoke({ answers, nextLevel, setAddition, addition, w, h }) {
     const errors = [
         "Короче",
         "как бы",
@@ -55,7 +55,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
     }
 
     return (
-        <div className="interactive" style={{ height: window.innerWidth < 891 ? window.innerHeight : ''}}>
+        <div className="interactive" style={{ height: w < 891 ? h : '' }}>
             {addition == undefined && <Countdown ref={clockRef} renderer={renderer} date={date} checkResult={checkResult}> </Countdown>}
 
             <div className="answer_inner">
@@ -75,7 +75,7 @@ function Karaoke({ answers, nextLevel, setAddition, addition }) {
                             <span className={`violet ${stricked.indexOf('часто') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('часто')}>часто</span> наблюдаются в связи с
                             <span className={`violet ${stricked.indexOf('типа') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('типа')}>типа</span> невысокой
                             <span className={`violet ${stricked.indexOf('речевой') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('речевой')}>речевой</span> культурой, или,
-                            <span className={`violet ${stricked.indexOf('значит') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('значит')}>значит</span>, 
+                            <span className={`violet ${stricked.indexOf('значит') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('значит')}>значит</span>,
                             <span className={`violet ${stricked.indexOf('в связи с тем') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в связи с тем')}>в связи с тем</span>, что говорящий,
                             <span className={`violet ${stricked.indexOf('так сказать') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('так сказать')}>так сказать</span><span>,</span>
                             <span className={`violet ${stricked.indexOf('в принципе') !== -1 ? "stricked" : ''}`} onClick={() => performKaraoke('в принципе')}>в принципе</span> не решается высказать свои мысли.</p>
