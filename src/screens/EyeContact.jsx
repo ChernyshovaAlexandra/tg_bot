@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import $ from 'jquery'
 
-function EyeContact({ nextLevel }) {
+function EyeContact({ nextLevel, w, h }) {
     let sectionsInitial = [{ contact: false }, { contact: false }, { contact: false }]
     const [sections, setContact] = useState(sectionsInitial)
     const [dragged, setDragged] = useState(false)
@@ -68,7 +68,13 @@ function EyeContact({ nextLevel }) {
                 <div className={`section section-2 ${sections[1].contact ? "contacted" : ''}`}></div>
                 <div className={`section section-3 ${sections[2].contact ? "contacted" : ''}`}></div>
                 {grayPanel && sizes.length ?
-                    <Draggable ref={draggableRef} onStop={setSectionMade} onDrag={setSectionMade}>
+                    <Draggable
+                        ref={draggableRef}
+                        bounds={{ left: 0, right: w - 80, top: 0, bottom: h - 80 }}
+                        defaultPosition={{ x: 0, y: 0 }}
+                        onStop={setSectionMade}
+                        onDrag={setSectionMade}
+                    >
                         <div className="eye"></div>
                     </Draggable> : <></>}
             </div>
